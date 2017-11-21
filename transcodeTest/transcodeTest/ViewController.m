@@ -28,8 +28,6 @@ static double widgetWidth = 360;
     BOOL            bClick;
     
     dispatch_queue_t _graphTranscodeQueue;
-    
-    //TransCodeSession *transcode;
 }
 
 - (void)viewDidLoad {
@@ -85,13 +83,10 @@ static double widgetWidth = 360;
 - (void)uiButtonTapped:(id)sender
 {
     dispatch_sync(_graphTranscodeQueue, ^{
-        for (int i = 0; i < 100; i ++) {
+        for (int i = 0; i < 1; i ++) {
             NSLog(@"transcode begin\n");
-           // @try {
-                [self transcode];
-            //} @catch (NSException *exception){
-                
-            //}
+           [self transcode];
+
             NSLog(@"transcode end i:%d\n", i);
         }
     });

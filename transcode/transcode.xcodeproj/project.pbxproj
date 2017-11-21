@@ -39,7 +39,6 @@
 /* Begin PBXFileReference section */
 		A85193431FC2D0C800E49D72 /* libavresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavresample.a; path = vender/libffmpeg/lib/libavresample.a; sourceTree = "<group>"; };
 		A85193441FC2D0C800E49D72 /* libpostproc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpostproc.a; path = vender/libffmpeg/lib/libpostproc.a; sourceTree = "<group>"; };
-		A85193471FC2D56300E49D72 /* libx264.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libx264.a; path = vender/libffmpeg/lib/libx264.a; sourceTree = "<group>"; };
 		A8BAECE41FC068EE00B5E624 /* libtranscode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libtranscode.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8BAECE71FC068EE00B5E624 /* transcode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = transcode.h; sourceTree = "<group>"; };
 		A8BAECE81FC068EE00B5E624 /* transcode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = transcode.m; sourceTree = "<group>"; };
@@ -81,7 +80,6 @@
 		A85193421FC2D0C800E49D72 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A85193471FC2D56300E49D72 /* libx264.a */,
 				A85193431FC2D0C800E49D72 /* libavresample.a */,
 				A85193441FC2D0C800E49D72 /* libpostproc.a */,
 			);

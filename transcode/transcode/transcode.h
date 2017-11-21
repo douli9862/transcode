@@ -10,11 +10,6 @@
 
 @interface TransCodeSession : NSObject
 
-
 + (BOOL) console:(NSString*) inParam;
-//+ (BOOL) console:(int)argc argv:(NSString*) argvStr;
-
-//+ (BOOL) console:(int)argc inFileTag:(NSString*) inFile  outFileTag:(NSString*) outFile;
-
 
 @end
