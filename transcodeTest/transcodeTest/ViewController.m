@@ -44,7 +44,7 @@ static double widgetWidth = 360;
     
     btnConnect = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 150, self.view.bounds.size.width -200, 50)];
     [btnConnect addTarget:self action:@selector(uiButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    [btnConnect setTitle:@"noConnect" forState:UIControlStateNormal];
+    [btnConnect setTitle:@"Transcode" forState:UIControlStateNormal];
     
    [self.view setBackgroundColor:UIColor.blackColor];
     [self.view addSubview:btnConnect];

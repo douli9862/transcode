@@ -134,6 +134,19 @@ static int input_stream_potentially_available = 0;
 static int ignore_unknown_streams = 0;
 static int copy_unknown_streams = 0;
 
+//add by teddy.ma for clear the static variables after parse options
+static void clear_variables()
+{
+    intra_only         = 0;
+    file_overwrite     = 0;
+    no_file_overwrite  = 0;
+    do_psnr            = 0;
+    override_ffserver  = 0;
+    input_stream_potentially_available = 0;
+    ignore_unknown_streams = 0;
+    copy_unknown_streams = 0;
+}
+
 static void uninit_options(OptionsContext *o)
 {
     const OptionDef *po = options;
@@ -3266,6 +3279,8 @@ fail:
         av_strerror(ret, error, sizeof(error));
         av_log(NULL, AV_LOG_FATAL, "%s\n", error);
     }
+    //add by teddy.ma
+    clear_variables();
     return ret;
 }
 

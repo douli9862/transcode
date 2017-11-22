@@ -72,7 +72,6 @@ char** str_split(char* a_str, const char a_delim, int *retCount)
     
     outParam = str_split(agrv, ' ', &count);
     
-    
     console(count, outParam);
 
     for (int i = 0; i < count; i ++) {

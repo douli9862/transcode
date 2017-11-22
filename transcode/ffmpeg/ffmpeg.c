@@ -112,7 +112,7 @@
 const char program_name[] = "ffmpeg";
 const int program_birth_year = 2000;
 
-static FILE *vstats_file;
+static FILE *vstats_file = NULL;
 
 const char *const forced_keyframes_const_names[] = {
     "n",
@@ -139,7 +139,7 @@ static int want_sdp = 1;
 static int current_time;
 AVIOContext *progress_avio = NULL;
 
-static uint8_t *subtitle_out;
+static uint8_t *subtitle_out = NULL;
 
 InputStream **input_streams = NULL;
 int        nb_input_streams = 0;
@@ -151,8 +151,8 @@ int         nb_output_streams = 0;
 OutputFile   **output_files   = NULL;
 int         nb_output_files   = 0;
 
-FilterGraph **filtergraphs;
-int        nb_filtergraphs;
+FilterGraph **filtergraphs = NULL;
+int        nb_filtergraphs = 0;
 
 #if HAVE_TERMIOS_H
 
@@ -601,6 +601,7 @@ static void ffmpeg_cleanup(int ret)
             av_log(NULL, AV_LOG_ERROR,
                    "Error closing vstats file, loss of information possible: %s\n",
                    av_err2str(AVERROR(errno)));
+        vstats_file = NULL;
     }
     av_freep(&vstats_filename);
 
@@ -799,7 +800,7 @@ static void write_packet(OutputFile *of, AVPacket *pkt, OutputStream *ost)
     ret = av_interleaved_write_frame(s, pkt);
     if (ret < 0) {
         print_error("av_interleaved_write_frame()", ret);
-        main_return_code = 1;
+        main_return_code = ret;
         close_all_output_streams(ost, MUXER_FINISHED | ENCODER_FINISHED, ENCODER_FINISHED);
     }
     av_packet_unref(pkt);
@@ -4582,7 +4583,7 @@ static int transcode(void)
         }
 
         /* dump report by using the output first video and audio streams */
-        print_report(0, timer_start, cur_time);
+//        print_report(0, timer_start, cur_time);
     }
 #if HAVE_PTHREADS
     free_input_threads();
@@ -4617,7 +4618,7 @@ static int transcode(void)
     }
 
     /* dump report by using the first video and audio streams */
-    print_report(1, timer_start, av_gettime_relative());
+//    print_report(1, timer_start, av_gettime_relative());
 
     /* close each encoder */
     for (i = 0; i < nb_output_streams; i++) {
@@ -4739,7 +4740,7 @@ int console(int argc, char **argv)
 
     register_exit(ffmpeg_cleanup);
 
-    setvbuf(stderr,NULL,_IONBF,0); /* win32 runtime needs this */
+    //setvbuf(stderr,NULL,_IONBF,0); /* win32 runtime needs this */
 
     av_log_set_flags(AV_LOG_SKIP_REPEATED);
     parse_loglevel(argc, argv, options);
@@ -4765,13 +4766,15 @@ int console(int argc, char **argv)
     ret = ffmpeg_parse_options(argc, argv);
     if (ret < 0) {
         av_log(NULL, AV_LOG_ERROR, "ffmpeg_parse_options ret:%d\n", ret);
-        exit_program(1);
+        //exit_program(1);
+        ffmpeg_cleanup(1);
     }
 
     if (nb_output_files <= 0 && nb_input_files == 0) {
         show_usage();
         av_log(NULL, AV_LOG_WARNING, "Use -h to get full help or, even better, run 'man %s'\n", program_name);
-        exit_program(1);
+        //exit_program(1);
+        ffmpeg_cleanup(1);
     }
 
     /* file converter / grab */
