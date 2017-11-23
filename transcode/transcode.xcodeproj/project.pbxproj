@@ -7,14 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A8AD2ED81FC51FC000C52E39 /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BAED4A1FC2A78000B5E624 /* libavcodec.a */; };
-		A8AD2ED91FC51FC000C52E39 /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BAED4B1FC2A78000B5E624 /* libavfilter.a */; };
-		A8AD2EDA1FC51FC000C52E39 /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BAED4C1FC2A78000B5E624 /* libavformat.a */; };
-		A8AD2EDB1FC51FC000C52E39 /* libavresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A85193431FC2D0C800E49D72 /* libavresample.a */; };
-		A8AD2EDC1FC51FC000C52E39 /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BAED4D1FC2A78000B5E624 /* libavutil.a */; };
-		A8AD2EDD1FC51FC000C52E39 /* libpostproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A85193441FC2D0C800E49D72 /* libpostproc.a */; };
-		A8AD2EDE1FC51FC000C52E39 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BAED4E1FC2A78000B5E624 /* libswresample.a */; };
-		A8AD2EDF1FC51FC000C52E39 /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BAED4F1FC2A78000B5E624 /* libswscale.a */; };
 		A8BAECE91FC068EE00B5E624 /* transcode.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BAECE81FC068EE00B5E624 /* transcode.m */; };
 		A8BAECEA1FC068EE00B5E624 /* transcode.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A8BAECE71FC068EE00B5E624 /* transcode.h */; };
 		A8BAECF91FC0696A00B5E624 /* cmdutils.c in Sources */ = {isa = PBXBuildFile; fileRef = A8BAECF21FC0696A00B5E624 /* cmdutils.c */; };
@@ -63,14 +55,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8AD2ED81FC51FC000C52E39 /* libavcodec.a in Frameworks */,
-				A8AD2ED91FC51FC000C52E39 /* libavfilter.a in Frameworks */,
-				A8AD2EDA1FC51FC000C52E39 /* libavformat.a in Frameworks */,
-				A8AD2EDB1FC51FC000C52E39 /* libavresample.a in Frameworks */,
-				A8AD2EDC1FC51FC000C52E39 /* libavutil.a in Frameworks */,
-				A8AD2EDD1FC51FC000C52E39 /* libpostproc.a in Frameworks */,
-				A8AD2EDE1FC51FC000C52E39 /* libswresample.a in Frameworks */,
-				A8AD2EDF1FC51FC000C52E39 /* libswscale.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

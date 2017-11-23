@@ -58,20 +58,24 @@ static double widgetWidth = 360;
 -(BOOL) transcode
 {
     NSString *transcode = @"ffmpeg -i ";
-    
     NSString * inFile1 = [[self applicationDocumentsDirectory] stringByAppendingString:@"/in.mp4"];
     NSString * outFile1 = [[self applicationDocumentsDirectory] stringByAppendingString:@"/output.mp4"];
     
     //fmpeg -i MP4 -c copy -y Output.mp4
     //NSString *temp = @" -c:a copy -c:v libx264 -y ";
     NSString *temp = @" -c copy -y ";
-    
     transcode = [NSString stringWithFormat:@"%@%@%@%@" , transcode, inFile1, temp, outFile1];
     
      [TransCodeSession console:transcode];
     
     return YES;
-    
+}
+
+- (NSString *) applicationDocumentsDirectory
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+    return basePath;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -92,12 +96,7 @@ static double widgetWidth = 360;
     });
 }
 
-- (NSString *) applicationDocumentsDirectory
-{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
-    return basePath;
-}
+
 
 
 @end

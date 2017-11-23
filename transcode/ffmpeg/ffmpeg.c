@@ -610,7 +610,16 @@ static void ffmpeg_cleanup(int ret)
     av_freep(&output_streams);
     av_freep(&output_files);
 
+    
     uninit_opts();
+
+    audio_volume = 256;
+
+    progress_avio = NULL;
+    nb_filtergraphs = 0;
+    run_as_daemon  = 0;
+    nb_frames_dup = 0;
+    nb_frames_drop = 0;
 
     //avformat_network_deinit();
 
@@ -4735,6 +4744,8 @@ int console(int argc, char **argv)
     nb_output_files   = 0;
     ffmpeg_exited     = 0;
     main_return_code  = 0;
+    
+    want_sdp = 1;
 
     init_dynload();
 
@@ -4744,7 +4755,6 @@ int console(int argc, char **argv)
 
     av_log_set_flags(AV_LOG_SKIP_REPEATED);
     parse_loglevel(argc, argv, options);
-
     if(argc>1 && !strcmp(argv[1], "-d")){
         run_as_daemon=1;
         av_log_set_callback(log_callback_null);
@@ -4768,6 +4778,7 @@ int console(int argc, char **argv)
         av_log(NULL, AV_LOG_ERROR, "ffmpeg_parse_options ret:%d\n", ret);
         //exit_program(1);
         ffmpeg_cleanup(1);
+        return 1;
     }
 
     if (nb_output_files <= 0 && nb_input_files == 0) {
@@ -4775,6 +4786,7 @@ int console(int argc, char **argv)
         av_log(NULL, AV_LOG_WARNING, "Use -h to get full help or, even better, run 'man %s'\n", program_name);
         //exit_program(1);
         ffmpeg_cleanup(1);
+        return 1;
     }
 
     /* file converter / grab */
